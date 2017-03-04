@@ -10,8 +10,18 @@
   	<description></description>
   	<servlet-class>src.main.OcrProcess</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ad</servlet-name>
+  	<display-name>ad</display-name>
+  	<description></description>
+  	<servlet-class>ad</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>OcrProcess</servlet-name>
   	<url-pattern>/OcrProcess</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ad</servlet-name>
+  	<url-pattern>/ad</url-pattern>
   </servlet-mapping>
 </web-app>
