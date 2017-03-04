@@ -1,5 +1,6 @@
 package com.cuhacking.payup;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,7 +24,11 @@ public class SelectActivity extends AppCompatActivity {
 
     }
     public void viewBill(View v){
-        //TODO go to vincent
         Log.d("TAG", "viewBill: Clicked");
+        Intent intent = new Intent(this, ViewBill.class);
+        //EditText editText = (EditText) findViewById(R.id.editText);
+        //String message = editText.getText().toString();
+        //intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
     }
 }

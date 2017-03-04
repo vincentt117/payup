@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "burnished-treat-160500",
+  "private_key_id": "bd00ea5137929c4ed8bdfe2e39d70476c829cb69",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCvXIHsj7vktBd6\nItGQO8p9/oYCciW4EGIt3tBW9+CQi6pQihf+2XFS8Q34TEG2o+EHY9bfq5EgOF9Z\n9qn+HKCGPwDrbb8rOYE6XA3fAbGyALinPZ05WoahVTRld9FKXvVhj20smo0mlr12\n/IPnZTeCQYRUa8+gcjW3+3eQAXaUZ11e/Q/qYODKCCy7t9EqvQqko1IH1nwydh9O\nHpXvvyp+8yUtc78R+Mz388F0De60Q30BHJctwygaM8nRMiIzYRKASIQz5VyI8scs\n93YCZ4YO9ZxkWxD3a9vDsyNSOpiMqfzLG/TLVpb9IAS+iLaeF7QSILPzZsvphtsV\neymp1PerAgMBAAECggEAMQqV6ypnSZZz2lxSbxvJjWLY52Y01jz+uAVQDoJT8xic\nENoNy9/TqXZwibgJyKIcFIz/Up4QgApD4EzzTXWEDwcforeWdugmE8QavPskTruU\n6HB6v8dpT0Uc2iOgDERyK06JIag3QUt2wQfte5D67RqVf2aHMj++di2FSmieWPH4\n0FSvYi2/Q6rf5aYcqmiXEf18KiMe6yw5PnRNwxGLhu40OLbiRAiF+IXlbhykOaf8\n0V594ujKvMx06PCoS89katzdWWNYqGrq17Jn82BYtuPkNueGpkWwHYPmyWApJWHX\nXhhh28QoDWM5ZihyHnkusDXEPiRoAH2dUMmHv6+PwQKBgQDUfOiiz8GEYyILnOXa\n4+9KoAMYq92F+TImWES9MxrMEsAbqaCrFzn+KZw8sjsdr58tlmdlOcCsQ/8Fnmaz\nYkaFO7yYLe10dn2FoPH3NoZOaYQxYbNwPra0CQyFO9kuj15kTZW+mNPwwKlFI4wy\nI/uH3ZMUX9urUSQcSSYhpdIC5wKBgQDTRVddB3FqPPdJrN8dfZhtvX6dmMUZVZqf\nTmJynSP/Uuvs7JhCpY8tjFw9hZDbNdxtAmgalGCaYDffDYHHJFsGB2fwLqHy28Q2\nOXuccFv22Mejn9KuuE/T/WqNXT1JSJFBjmaW6Fd2uXT6QB1dmyOy8jps5x37USC8\nle4cHLdQnQKBgASMhAJwRilKYgEzo6wS8x163XYav8xNcGhnvVj7jhhOUnSFJh5j\niedKBsE545AYIWU9cgs1uE03y27YXER81xulEr2DRjEXFErXDjcHoMpu8diIyeme\nPhUOmIkFpfmcMh4dlxYUeX0O8tC7GRY9tPXMpYhrIO3C9+3vFvTjcuKDAoGAGIDV\nVhvT4p95itj685+qeyfcNIkQaxTLnyhnMKXbE/TZGhyCuFAdYAoEdLo2B8aibx41\nVsfYwG7ibANUBvXHfNaFDo1KCTHF+wgFtyos8F9KIEccF1mXIJ4mqoii4AoDltfe\nPChsZH+z+oZPIZkptcp0Tkcr6gcJxfWZrTcDZ90CgYBbdJMh3zkgiuIJm4ivoKRt\nfX3Z19mA9FHKNGeNg5H4eeZACPhMt1GPXPxDM4M8AZni6MuMZhTSWUIWzaBNn52q\ngCzqPmBwzccDtkwuug72N3XIP/kFJc/SdRuO6lyF/jkoiXWkLEm8QynHfAJdp9wW\nmpwhwWt9O2PiMTZtpQq4Kg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "krystian@burnished-treat-160500.iam.gserviceaccount.com",
+  "client_id": "104234976341311929077",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/krystian%40burnished-treat-160500.iam.gserviceaccount.com"
+}

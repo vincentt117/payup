@@ -1,5 +1,6 @@
 package src.main;
 
+import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.cloud.vision.spi.v1.ImageAnnotatorClient;
 import com.google.cloud.vision.v1.AnnotateImageRequest;
 import com.google.cloud.vision.v1.AnnotateImageResponse;
@@ -48,6 +49,7 @@ public class OcrProcess extends HttpServlet {
 		response1.getWriter().append("Served at: ").append(request1.getContextPath());
 //
 //
+		GoogleCredential credential = GoogleCredential.getApplicationDefault();
 		// Instantiates a client
 		ImageAnnotatorClient vision = ImageAnnotatorClient.create();
 
