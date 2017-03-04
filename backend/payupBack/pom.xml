@@ -29,4 +29,7 @@
 	<build>
 		<finalName>payupBack</finalName>
 	</build>
+	<properties>
+		<env-var name="GOOGLE_APPLICATION_CREDENTIALS" value="WEB-INF/key.json" />
+	</properties>
 </project>
