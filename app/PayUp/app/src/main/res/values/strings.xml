@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">PayUp</string>
+    <string name="take_receipt_picture">Take Receipt Picture</string>
+    <string name="view_bill">View Bill</string>
 </resources>
