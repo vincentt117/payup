@@ -21,11 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
-        <activity android:name=".CameraActivity"></activity>
-=======
-        <activity android:name=".ViewBill"></activity>
->>>>>>> 33d8674d276f051b6320b32dcf7277c750c9aebe
+
     </application>
 
 </manifest>

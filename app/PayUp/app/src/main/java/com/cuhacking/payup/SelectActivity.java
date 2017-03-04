@@ -1,6 +1,7 @@
 package com.cuhacking.payup;
 
 import android.content.Intent;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,6 +22,7 @@ public class SelectActivity extends AppCompatActivity {
     public void takePicture(View v){
         //TODO go to vincent
         Log.d("TAG", "takePicture: Clicked");
+
 
     }
     public void viewBill(View v){
