@@ -18,6 +18,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,6 +33,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/OcrProcess/")
 public class OcrProcess extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private ServletContext servletContext;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -41,6 +43,11 @@ public class OcrProcess extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+	public void init(){
+		servletContext = getServletContext();		
+	}
+	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -49,12 +56,15 @@ public class OcrProcess extends HttpServlet {
 		response1.getWriter().append("Served at: ").append(request1.getContextPath());
 //
 //
-		GoogleCredential credential = GoogleCredential.getApplicationDefault();
+		//GoogleCredential credential = GoogleCredential.getApplicationDefault();
 		// Instantiates a client
 		ImageAnnotatorClient vision = ImageAnnotatorClient.create();
 
+		
+		
+		
 		// The path to the image file to annotate
-		String fileName = "./resources/wakeupcat.jpg";
+		String fileName = servletContext.getResource("WEB-INF/receipt.jpg").getFile();
 
 		// Reads the image file into memory
 		Path path = Paths.get(fileName);
