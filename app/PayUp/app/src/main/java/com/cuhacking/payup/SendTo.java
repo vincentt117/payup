@@ -1,22 +1,52 @@
 package com.cuhacking.payup;
 
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 
+import java.io.File;
+
 public class SendTo extends AppCompatActivity {
-    String[] mobileArray = {"Android","IPhone","WindowsMobile","Blackberry",
-            "WebOS","Ubuntu","Windows7","Max OS X"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ArrayAdapter adapter = new ArrayAdapter<String>(this,
-                R.layout.activity_send_to, mobileArray);
+        setContentView(R.layout.activity_send_to);
+        // Find the last picture
+        String[] projection = new String[]{
+                MediaStore.Images.ImageColumns._ID,
+                MediaStore.Images.ImageColumns.DATA,
+                MediaStore.Images.ImageColumns.BUCKET_DISPLAY_NAME,
+                MediaStore.Images.ImageColumns.DATE_TAKEN,
+                MediaStore.Images.ImageColumns.MIME_TYPE
+        };
 
-        ListView listView = (ListView) findViewById(R.id.mobile_list);
-        listView.setAdapter(adapter);
+        final Cursor cursor = getApplicationContext().getContentResolver()
+                .query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, projection, null,
+                        null, MediaStore.Images.ImageColumns.DATE_TAKEN + " DESC");
+
+        // Put it in the image view
+        if (cursor.moveToFirst()) {
+            final ImageView imageView = (ImageView) findViewById(R.id.pictureView);
+            String imageLocation = cursor.getString(1);
+            File imageFile = new File(imageLocation);
+            if (imageFile.exists()) {   // TODO: is there a better way to do this?
+                Bitmap bm = BitmapFactory.decodeFile(imageLocation);
+                imageView.setImageBitmap(bm);
+            }
+        }
+//        ArrayAdapter adapter = new ArrayAdapter<String>(this,
+//                R.layout.activity_send_to, mobileArray);
+//
+//        ListView listView = (ListView) findViewById(R.id.mobile_list);
+//        listView.setAdapter(adapter);
 
     }
 }

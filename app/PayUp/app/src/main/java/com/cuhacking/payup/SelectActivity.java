@@ -48,20 +48,16 @@ public class SelectActivity extends AppCompatActivity {
 
     public void takePicture(View v){
         //TODO go to vincent
-        Camera.CameraInfo cameraInfo = new Camera.CameraInfo();
-        boolean go = false;
         Log.d("TAG", "takePicture: Clicked");
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
         Log.d("Camera:", "Picture Taken");
 
     }
-    static final int PICK_CONTACT_REQUEST = 1;
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Intent intent = new Intent(this, CameraActivity.class);
+        Intent intent = new Intent(this, SendTo.class);
         startActivity(intent);
-
     }
 
     public void viewBill(View v){

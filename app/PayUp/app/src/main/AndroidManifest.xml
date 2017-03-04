@@ -21,7 +21,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CameraActivity" />
         <activity android:name=".ViewBill" />
         <activity android:name=".SendTo"></activity>
     </application>
