@@ -22,7 +22,6 @@ public class SelectActivity extends AppCompatActivity {
     public void takePicture(View v){
         //TODO go to vincent
         Log.d("TAG", "takePicture: Clicked");
-
         Intent intent = new Intent(this, CameraActivity.class);
         startActivity(intent);
 
