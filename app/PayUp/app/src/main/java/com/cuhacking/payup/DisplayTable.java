@@ -8,10 +8,14 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.PopupWindow;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import static android.graphics.Color.WHITE;
 
@@ -24,55 +28,38 @@ public class DisplayTable extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_table);
         tableLayout = (TableLayout)findViewById(R.id.table_layout);
-        addRow(tableLayout, this, "Cheese Burger", "$14");
-        addRow(tableLayout, this, "Cheese Burger", "$14");
-        addRow(tableLayout, this, "Cheese Burger", "$14");
+        ArrayList<String> roomList = new ArrayList<String>(Arrays.asList("A Room", "B Room", "C Room"));
+        // roomList must contain elements to run
+        for (int i = 0; i < roomList.size(); i++) {
+            addRow(tableLayout, this, roomList.get(i));
+        }
+
 
     }
 
-    public void addRow(TableLayout tl, Context context, String prod, String price){
+    public void addRow(TableLayout tl, Context context, String roomName) {
         TableRow tr = new TableRow(context);
-        tr.setLayoutParams(tl.getLayoutParams());
-        TextView productView = new TextView(context);
-        TextView priceView = new TextView(context);
+        TextView roomView = new TextView(context);
+        Button roomButton = new Button(context);
 
-        productView.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
+        roomView.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
+                TableRow.LayoutParams.WRAP_CONTENT, 1f));
+        roomView.setText(roomName);
+
+        roomButton.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
                 TableRow.LayoutParams.WRAP_CONTENT, 1f ));
-        productView.setText(prod);
 
-        priceView.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
-                TableRow.LayoutParams.WRAP_CONTENT, 1f ));
-        priceView.setText(price);
-        tr.addView(productView);
-        tr.addView(priceView);
-        tr.setClickable(true);
-
-        final PopupWindow pw = new PopupWindow(context);
-        TextView info = new TextView(context);
-        TableLayout popupTable = new TableLayout(context);
-        TableRow popupTableRow = new TableRow(context);
-        info.setText("Testing..asdfasdfasdfasdfasdfasdf.");
-        info.setBackgroundColor(WHITE);
-        popupTableRow.addView(info);
-        pw.setContentView(popupTableRow);
-
-        tr.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(pw.isShowing()){
-                    pw.dismiss();
-                }else{
-                    pw.showAsDropDown(view);
-                }
+        roomButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
             }
         });
 
+        roomButton.setText(roomName);
 
+        tr.addView(roomView);
+        tr.addView(roomButton);
         tl.addView(tr);
-    }
-    public PopupMenu makePopupMenu(Context context, View anchor){
-        PopupMenu pm = new PopupMenu(context, anchor);
 
-        return pm;
     }
 }

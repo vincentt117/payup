@@ -54,7 +54,6 @@ public class SendTo extends AppCompatActivity {
         }
 
         tableLayout = (TableLayout)findViewById(R.id.send_to_table_layout);
-        addRow(tableLayout, this, "room1");
         ArrayList<String> roomList = new ArrayList<String>(Arrays.asList("A Room", "B Room", "C Room"));
         // roomList must contain elements to run
         for (int i = 0; i < roomList.size(); i++) {
@@ -94,10 +93,5 @@ public class SendTo extends AppCompatActivity {
         tr.addView(roomButton);
         tl.addView(tr);
 
-
     }
-
-
-
-
 }
