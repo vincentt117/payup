@@ -58,7 +58,7 @@
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintHorizontal_bias="0.615"
-        app:layout_constraintRight_toLeftOf="@+id/appCompatEditText"
+        app:layout_constraintRight_toLeftOf="@+id/client_username"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.158" />
 
@@ -69,11 +69,11 @@
         android:text="OK"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/appCompatEditText"
+        app:layout_constraintLeft_toRightOf="@+id/client_username"
         android:layout_marginLeft="8dp"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="67dp"
-        android:onClock="setName"/>
+        android:onClick="setName"/>
 
 </android.support.constraint.ConstraintLayout>

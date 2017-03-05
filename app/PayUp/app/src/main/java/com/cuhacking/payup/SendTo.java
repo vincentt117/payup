@@ -1,9 +1,11 @@
 package com.cuhacking.payup;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -86,12 +88,56 @@ public class SendTo extends AppCompatActivity {
                 // Perform action on click
             }
         });
-
-        roomButton.setText(roomName);
-
+        roomButton.setText("Send");
         tr.addView(roomView);
         tr.addView(roomButton);
         tl.addView(tr);
+    }
+    public void joinRoom(View v){
+        new Operation().execute("joinRoom");
+    }
+    public void createRoom(View v){
+        new Operation().execute("createRoom");
+    }
 
+
+
+    private class Operation extends AsyncTask<String, String, String> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+        @Override
+        protected String doInBackground(String... strings) {
+            String s = "";
+            for(int i =  0 ; i < strings.length ; i++){
+                if(strings[0].equals("joinRoom")){
+
+                }else if(strings[0].equals("createRoom")){
+                    s = middleProcess.createRoom(SelectActivity.username);
+                }
+            }
+            Log.d("String Params:", strings[0]);
+
+//            String s = middleProcess.createRoom("Username1");
+//            String g = middleProcess.getRooms("Username1").toString();
+//            Log.d("Create Room: ", s);
+//            Log.d("Get Room: ", g);
+            return s;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            Log.d("OnPostExecute: ", s);
+
+            addRow(tableLayout, SendTo.this, s);
+
+        }
+    }
+    public void join(View v){
+
+        Intent intent = new Intent(this, DisplayTable.class);
+        startActivity(intent);
     }
 }
