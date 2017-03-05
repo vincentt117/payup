@@ -13,13 +13,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import static android.R.attr.data;
 
 public class SelectActivity extends AppCompatActivity {
     static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 1;
     static final int REQUEST_IMAGE_CAPTURE = 0;
-    static String username;
+    public static String username = "";
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +45,15 @@ public class SelectActivity extends AppCompatActivity {
 
             return;
         }
+
     }
 
 
     public void takePicture(View v){
         //TODO go to vincent
+        if(username.length() == 0){
+            return;
+        }
         Log.d("TAG", "takePicture: Clicked");
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
@@ -62,11 +67,19 @@ public class SelectActivity extends AppCompatActivity {
     }
 
     public void viewBill(View v){
+        if(username.length() == 0){
+            return;
+        }
         Log.d("TAG", "viewBill: Clicked");
         Intent intent = new Intent(this, ViewBill.class);
         //EditText editText = (EditText) findViewById(R.id.editText);
         //String message = editText.getText().toString();
         //intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
+    }
+
+    public void setName(View v){
+        EditText editText = (EditText)findViewById(R.id.client_username);
+        username = editText.getText().toString();
     }
 }
