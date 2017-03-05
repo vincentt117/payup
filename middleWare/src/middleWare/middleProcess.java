@@ -152,7 +152,7 @@ public class middleProcess {
 				totalResponse += line;
 			}
 
-			String[] split = totalResponse.split(",");
+			String[] split = totalResponse.substring(1, totalResponse.length()-1).split(",");
 			for(int i = 0; i < split.length;i = i + 2){
 				if(i+1 < split.length){
 					products.add(new GenericTwo(split[i],Float.parseFloat(split[i+1])));

@@ -93,14 +93,20 @@ public class OcrProcess extends HttpServlet {
 			for (EntityAnnotation annotation : res.getTextAnnotationsList()) {
 				annotation.getAllFields().forEach((k, v)-> {
 					if(k.toString().contains("google.cloud.vision.v1.EntityAnnotation.description")){
+						System.out.println(v);
 						String[] text = v.toString().split("\n");
 						for(int i = 0; i < text.length - 1;i++){
 							if(text[i].startsWith("1") && text[i+1].contains(".")){
 								products.add(text[i].substring(text[i].indexOf(" ") + 1, text[i].length()));
 								products.add(text[i+1]);
-							} else if(text[i].contains("Total")){
-								products.add("Total");
-								products.add(text[i+1]);
+							} else if(text[i].contains("Tot")){
+								if(text[i-1].contains(".") && !text[i+1].contains(".")){
+									products.add("Total");
+									products.add(text[i-1]);
+								} else {
+									products.add("Total");
+									products.add(text[i+1]);
+								}
 								break;
 							}
 						}
@@ -141,7 +147,6 @@ public class OcrProcess extends HttpServlet {
 			    if (item.isFormField()) {
 			    } else {
 			        products.addAll(doStuff(item));
-			        //RoomManager.getRoom(name);
 			        UserManager.addFileItem(item, products, name);
 			    }
 			}
