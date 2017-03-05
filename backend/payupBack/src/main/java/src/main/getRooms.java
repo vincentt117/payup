@@ -57,7 +57,7 @@ public class getRooms extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		System.out.println("Get Rooms called");
 		String name = request.getHeader("name");
 		response.getWriter().append(RoomManager.getWhatRoomsIn(name));
 	}

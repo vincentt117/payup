@@ -9,14 +9,14 @@ public class Room {
 	
 	private ArrayList<Person> peopleInRoom;
 	
-	private UUID id;
+	private String id;
 	
-	public Room(UUID i){
+	public Room(String i){
 		id = i;
 		peopleInRoom = new ArrayList<Person>();
 	}
 	
-	public UUID getId(){
+	public String getId(){
 		return id;
 	}
 	
@@ -27,7 +27,7 @@ public class Room {
 	
 
 	public boolean checkId(String room) {
-		return UUID.fromString(room).toString().equals(this.getId().toString());
+		return (room).equals(this.getId());
 	}
 	
 	public void update(ArrayList<String> result){

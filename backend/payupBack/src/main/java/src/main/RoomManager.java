@@ -14,7 +14,7 @@ public class RoomManager {
 	private ArrayList<String> ocrData = new ArrayList<String>();
 
 	public static Room addRoom(String name){
-		Room room = new Room(UUID.randomUUID());
+		Room room = new Room(UUID.randomUUID().toString().substring(0, 5));
 		room.addPerson(name);
 		rooms.add(room);
 		return room;
@@ -74,6 +74,11 @@ public class RoomManager {
 				string = string + "," + rooms.get(i).getId();
 			}
 		}
+		
+		if(string.equals("")){
+			return null;
+		}
+		
 		return string.substring(1);
 	}
 

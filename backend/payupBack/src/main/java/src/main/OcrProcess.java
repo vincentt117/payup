@@ -96,18 +96,52 @@ public class OcrProcess extends HttpServlet {
 						System.out.println(v);
 						String[] text = v.toString().split("\n");
 						for(int i = 0; i < text.length - 1;i++){
-							if(text[i].startsWith("1") && text[i+1].contains(".")){
+							if(text[i].startsWith("1") && text[i+1].replaceAll(",", ".").contains(".")){
 								products.add(text[i].substring(text[i].indexOf(" ") + 1, text[i].length()));
-								products.add(text[i+1]);
-							} else if(text[i].contains("Tot")){
-								if(text[i-1].contains(".") && !text[i+1].contains(".")){
-									products.add("Total");
-									products.add(text[i-1]);
+								products.add(text[i+1].replaceAll(" ", "").replaceAll(",", "."));
+							} else if(text[i].contains("Credit Card")){
+								products.add("Total");
+								if(text[i+1].contains(".")){
+									products.add(text[i+1].replaceAll(" ", "").replaceAll(",", "."));
 								} else {
-									products.add("Total");
-									products.add(text[i+1]);
+									products.add(text[i-1].replaceAll(" ", "").replaceAll(",", "."));
 								}
+								
 								break;
+							} else if(text[i].contains("Tot")){
+								if(text[i-1].contains(".") && !text[i+1].contains(".") && Character.isAlphabetic(text[i-1].indexOf(" ") - 1)){
+									products.add("Total");
+									products.add(text[i-1].replaceAll(" ", "").replaceAll(",", "."));
+									break;
+								} else if(text[i + 1].contains(".") && Character.isAlphabetic(text[i-1].indexOf(" ") - 1)){
+									products.add("Total");
+									products.add(text[i+1].replaceAll(" ", "").replaceAll(",", "."));
+									break;
+								}
+							} 
+						}
+						
+						
+						if(products.size() >= 2 && !products.get(products.size() - 2).equals("Total")){
+							products.add("Total");
+							products.add("0.00");
+							System.out.println("called");
+						}
+						
+						boolean flag = false;
+						
+						for(int i = 0; i < products.get(products.size() - 1).length();i++){
+							if(!Character.isDigit(products.get(products.size() - 1).charAt(i))){
+								if(!flag){
+									String secondPart = products.get(products.size() - 1).substring(i + 1);
+									String firstPart = products.get(products.size() - 1).substring(0, i);
+									products.set(products.size() - 1, firstPart + "."+ secondPart);
+								} else {
+									String secondPart = products.get(products.size() - 1).substring(i + 1);
+									String firstPart = products.get(products.size() - 1).substring(0, i);
+									products.set(products.size() - 1, firstPart + secondPart);
+									i--;
+								}
 							}
 						}
 					}
