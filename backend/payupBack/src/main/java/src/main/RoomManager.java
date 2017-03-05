@@ -28,13 +28,12 @@ public class RoomManager {
 	}
 
 	public static String getRoomDue(String room) {
-		for(int i = 0; i < rooms.size();i++){
-			if(rooms.get(i).checkId(room)){
-				return rooms.get(i).getDues();
-			}
+		Room room1 = getRoom(room);
+		if(room1 != null){
+			return room1.getDues();
+		} else {
+			return null;
 		}
-		
-		return null;
 	}
 
 	public static String getWhatRoomsIn(String name) {
@@ -45,6 +44,17 @@ public class RoomManager {
 			}
 		}
 		return string.substring(1);
+	}
+
+	public static Room getRoom(String name) {
+
+		for(int i = 0; i < rooms.size();i++){
+			if(rooms.get(i).checkId(name)){
+				return rooms.get(i);
+			}
+		}
+
+		return null;
 	}
 
 }

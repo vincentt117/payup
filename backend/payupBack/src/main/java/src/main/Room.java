@@ -68,7 +68,7 @@ public class Room {
 	public String getDues() {
 		String dues = "";
 		for(int i = 0; i < peopleInRoom.size();i++){
-			dues = dues + "," + peopleInRoom.get(i).getDue();
+			dues = dues + "," + peopleInRoom.get(i).getString() + "," + peopleInRoom.get(i).getDue();
 		}
 		return dues.substring(1);
 	}

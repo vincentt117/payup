@@ -117,6 +117,9 @@ public class OcrProcess extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
+		
+		String name = request.getHeader("name");
+		
 		// Create a factory for disk-based file items
 		DiskFileItemFactory factory = new DiskFileItemFactory();
 
@@ -138,6 +141,7 @@ public class OcrProcess extends HttpServlet {
 			    if (item.isFormField()) {
 			    } else {
 			        products.addAll(doStuff(item));
+			        RoomManager.getRoom(name);
 			    }
 			}
 		} catch (FileUploadException e) {
