@@ -36,11 +36,14 @@ public class TakeReceiptPic extends AppCompatActivity {
         accept = (Button) findViewById(R.id.accept);
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View arg0) {
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), SendTo.class);
+                startActivity(intent);
             }
         });
         retry = (Button) findViewById(R.id.retry);
         retry.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View arg0) {
                 Intent refershed = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(refershed, REQUEST_IMAGE_CAPTURE);
@@ -62,10 +65,10 @@ public class TakeReceiptPic extends AppCompatActivity {
             final ImageView imageView = (ImageView) findViewById(R.id.imageView1);
             String imageLocation = cursor.getString(1);
             File imageFile = new File(imageLocation);
-            if (imageFile.exists()) {   // TODO: is there a better way to do this? 
-                Bitmap bm = BitmapFactory.decodeFile(imageLocation);
-                imageView.setImageBitmap(bm);
-            }
+//            if (imageFile.exists()) {   // TODO: is there a better way to do this? 
+//                Bitmap bm = BitmapFactory.decodeFile(imageLocation);
+//                imageView.setImageBitmap(bm);
+//            }
         }Log.d("attempt", "yes");
         }
 
