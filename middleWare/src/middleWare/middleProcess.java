@@ -8,10 +8,10 @@ import java.util.UUID;
 
 public class middleProcess {
 	
-	public static ArrayList<GenericTwo> joinRoom(String roomId, String name){
+	public static String joinRoom(String roomId, String name){
         String charset = "UTF-8";
         String requestURL = "http://172.17.192.146:8080/payupBack/joinRoom/";
-        ArrayList<GenericTwo> prices = new ArrayList<GenericTwo>();
+        String totalResponse = "";
         try {
             doPost multipart = new doPost(requestURL, charset);
             multipart.addHeaderField("room", roomId);
@@ -19,21 +19,17 @@ public class middleProcess {
             multipart.nextStep();
             List<String> response = multipart.finish();
              
-            String totalResponse = "";
+            
             for (String line : response) {
                 totalResponse += line;
             }
             
-            String[] split = totalResponse.split(",");
-            for(int i = 0; i < split.length;i = i + 2){
-            	prices.add(new GenericTwo(split[i],Float.parseFloat(split[i+1])));
-            }
             
         } catch (IOException ex) {
             System.err.println(ex);
         }
 		
-		return prices;
+		return totalResponse;
 	}
 	
 	public static ArrayList<String> getRooms(String name){
