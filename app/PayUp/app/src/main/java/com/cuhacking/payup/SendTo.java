@@ -1,5 +1,6 @@
 package com.cuhacking.payup;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -8,13 +9,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class SendTo extends AppCompatActivity {
+    TableLayout tableLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,8 +53,51 @@ public class SendTo extends AppCompatActivity {
             }
         }
 
+        tableLayout = (TableLayout)findViewById(R.id.send_to_table_layout);
+        addRow(tableLayout, this, "room1");
+        ArrayList<String> roomList = new ArrayList<String>(Arrays.asList("A Room", "B Room", "C Room"));
+        // roomList must contain elements to run
+        for (int i = 0; i < roomList.size(); i++) {
+            addRow(tableLayout, this, roomList.get(i));
+        }
+
+
+
 
 
 
     }
+
+
+
+    public void addRow(TableLayout tl, Context context, String roomName) {
+        TableRow tr = new TableRow(context);
+        TextView roomView = new TextView(context);
+        Button roomButton = new Button(context);
+
+        roomView.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
+                TableRow.LayoutParams.WRAP_CONTENT, 1f));
+        roomView.setText(roomName);
+
+        roomButton.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
+                TableRow.LayoutParams.WRAP_CONTENT, 1f ));
+
+        roomButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+            }
+        });
+
+        roomButton.setText(roomName);
+
+        tr.addView(roomView);
+        tr.addView(roomButton);
+        tl.addView(tr);
+
+
+    }
+
+
+
+
 }
