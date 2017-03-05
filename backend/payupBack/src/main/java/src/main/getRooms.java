@@ -59,7 +59,7 @@ public class getRooms extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		System.out.println(request.getParameterMap().toString());
-		String name = request.getParameter("name");
+		String name = request.getHeader("name");
 		System.out.println(name);
 		response.getWriter().append(RoomManager.getWhatRoomsIn(name));
 	}

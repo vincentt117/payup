@@ -115,6 +115,7 @@ public class doPost {
      */
     public void addHeaderField(String name, String value) {
         writer.append(name + ": " + value).append(LINE_FEED);
+        httpConn.setRequestProperty(name, value);
         writer.flush();
     }
      
