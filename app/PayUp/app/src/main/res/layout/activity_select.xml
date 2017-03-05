@@ -8,8 +8,8 @@
 
     <android.support.v7.widget.AppCompatEditText
 
-        android:layout_width="200dp"
-        android:layout_height="50dp"
+        android:layout_width="174dp"
+        android:layout_height="59dp"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="8dp"
@@ -18,14 +18,17 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/take_receipt_picture"
-        android:id="@+id/client_username" />
+        android:hint="  Username"
+        android:id="@+id/client_username"
+        app:layout_constraintHorizontal_bias="0.283"
+        app:layout_constraintVertical_bias="0.731" />
     <Button
         android:id="@+id/take_receipt_picture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="258dp"
+        android:layout_height="69dp"
         android:text="@string/take_receipt_picture"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="184dp"
+        android:layout_marginTop="183dp"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
@@ -35,45 +38,32 @@
 
     <Button
         android:id="@+id/view_bill"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="263dp"
+        android:layout_height="68dp"
         android:text="@string/view_bill"
-        android:layout_marginTop="98dp"
+        android:layout_marginTop="21dp"
         app:layout_constraintTop_toBottomOf="@+id/take_receipt_picture"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        android:onClick="viewBill"/>
+        android:onClick="viewBill"
+        app:layout_constraintHorizontal_bias="0.502" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Username: "
-        android:layout_marginBottom="8dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.615"
-        app:layout_constraintRight_toLeftOf="@+id/client_username"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.158" />
 
     <Button
         android:id="@+id/set_name"
-        android:layout_width="77dp"
-        android:layout_height="49dp"
-        android:text="OK"
+        android:layout_width="96dp"
+        android:layout_height="62dp"
+        android:text="Verify"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/client_username"
         android:layout_marginLeft="8dp"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="67dp"
-        android:onClick="setName"/>
+        android:layout_marginTop="87dp"
+        android:onClick="setName"
+        tools:layout_editor_absoluteY="74dp" />
 
 </android.support.constraint.ConstraintLayout>

@@ -6,6 +6,6 @@
     <string name="product">Product</string>
     <string name="accept">Accept</string>
     <string name="retry">Retry</string>
-    <string name="name">Name</string>
-    <string name="debt">Debt</string>
+    <string name="name"><b>Name</b></string>
+    <string name="debt"><b>Debt</b></string>
 </resources>

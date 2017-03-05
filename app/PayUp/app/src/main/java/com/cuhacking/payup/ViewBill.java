@@ -103,7 +103,7 @@ public class ViewBill extends AppCompatActivity {
 
             }
         });
-        roomButton.setText("Send");
+        roomButton.setText("View");
         tr.addView(roomView);
         tr.addView(roomButton);
         tl.addView(tr);
