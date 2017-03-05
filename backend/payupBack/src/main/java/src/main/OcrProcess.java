@@ -141,7 +141,8 @@ public class OcrProcess extends HttpServlet {
 			    if (item.isFormField()) {
 			    } else {
 			        products.addAll(doStuff(item));
-			        RoomManager.getRoom(name);
+			        //RoomManager.getRoom(name);
+			        UserManager.addFileItem(item, products, name);
 			    }
 			}
 		} catch (FileUploadException e) {

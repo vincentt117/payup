@@ -131,7 +131,7 @@ public class middleProcess {
 		
 	}
 	
-	public static ArrayList<GenericTwo> sendFile(File file, String name, String room){
+	public static ArrayList<GenericTwo> sendFile(File file, String name){
 		ArrayList<GenericTwo> products = new ArrayList<GenericTwo>();
 		
         String charset = "UTF-8";
@@ -140,7 +140,6 @@ public class middleProcess {
         try {
             doPost multipart = new doPost(requestURL, charset);
             multipart.addHeaderField("name", name);
-            multipart.addHeaderField("room", room);
             multipart.nextStep();
             multipart.addFilePart("uploadImg", file);
             

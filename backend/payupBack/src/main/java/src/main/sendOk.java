@@ -58,7 +58,8 @@ public class sendOk extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String room = request.getParameter("room");
+		String name = request.getHeader("name");
+		String room = request.getHeader("room");
 		// Create a factory for disk-based file items
 		DiskFileItemFactory factory = new DiskFileItemFactory();
 
@@ -79,7 +80,8 @@ public class sendOk extends HttpServlet {
 
 			    if (item.isFormField()) {
 			    } else {
-			        RoomManager.sendOk(item,room);
+			        //RoomManager.sendOk(item,room);
+			    	UserManager.exists(item, name, room);
 			    }
 			}
 		} catch (FileUploadException e) {
