@@ -19,6 +19,7 @@ import static android.R.attr.data;
 public class SelectActivity extends AppCompatActivity {
     static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 1;
     static final int REQUEST_IMAGE_CAPTURE = 0;
+    static String username;
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {

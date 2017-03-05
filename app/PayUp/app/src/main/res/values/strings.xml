@@ -4,4 +4,7 @@
     <string name="view_bill">View Bill</string>
     <string name="price">Price</string>
     <string name="product">Product</string>
+
+    <string name="name">Name</string>
+    <string name="debt">Debt</string>
 </resources>

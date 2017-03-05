@@ -34,24 +34,17 @@ public class SendTo extends AppCompatActivity {
 
         // Put it in the image view
         if (cursor.moveToFirst()) {
-            final ImageView imageView = (ImageView) findViewById(R.id.pictureView);
+            //final ImageView imageView = (ImageView) findViewById(R.id.pictureView);
             String imageLocation = cursor.getString(1);
             File imageFile = new File(imageLocation);
             if (imageFile.exists()) {   // TODO: is there a better way to do this?
                 Bitmap bm = BitmapFactory.decodeFile(imageLocation);
-                imageView.setImageBitmap(bm);
+                //imageView.setImageBitmap(bm);
             }
         }
 
 
-        //get file
-        //middleProcess.send(file);
 
-//        ArrayAdapter adapter = new ArrayAdapter<String>(this,
-//                R.layout.activity_send_to, mobileArray);
-//
-//        ListView listView = (ListView) findViewById(R.id.mobile_list);
-//        listView.setAdapter(adapter);
 
     }
 }
