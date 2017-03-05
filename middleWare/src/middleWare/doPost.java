@@ -122,8 +122,9 @@ public class doPost {
      * @param value - value of the header field
      */
     public void addHeaderField(String name, String value) {
-        writer.append(name + ": " + value).append(LINE_FEED);
-        writer.flush();
+//        writer.append(name + ": " + value).append(LINE_FEED);
+//        writer.flush();
+        httpConn.setRequestProperty(name,value);
     }
      
     /**
