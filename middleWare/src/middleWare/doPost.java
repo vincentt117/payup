@@ -52,9 +52,17 @@ public class doPost {
                 "multipart/form-data; boundary=" + boundary);
         httpConn.setRequestProperty("User-Agent", "CodeJava Agent");
         httpConn.setRequestProperty("Test", "Bonjour");
-        outputStream = httpConn.getOutputStream();
-        writer = new PrintWriter(new OutputStreamWriter(outputStream, charset),
-                true);
+    }
+    
+    public void nextStep(){
+        try {
+			outputStream = httpConn.getOutputStream();
+	        writer = new PrintWriter(new OutputStreamWriter(outputStream, charset),
+	                true);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
  
     /**
@@ -115,7 +123,6 @@ public class doPost {
      */
     public void addHeaderField(String name, String value) {
         writer.append(name + ": " + value).append(LINE_FEED);
-        httpConn.setRequestProperty(name, value);
         writer.flush();
     }
      
