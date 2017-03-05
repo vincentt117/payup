@@ -26,8 +26,8 @@ public class ViewBill extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_bill);
         tableLayout = (TableLayout)findViewById(R.id.view_bill_table_layout);
-        textView = (TextView)findViewById(R.id.textView);
-        new Operation(this).execute();
+        //textView = (TextView)findViewById(R.id.textView);
+        new Operation(this).execute("getRoom");
     }
 
 
