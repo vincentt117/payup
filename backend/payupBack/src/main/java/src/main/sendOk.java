@@ -31,22 +31,16 @@ import com.google.protobuf.ByteString;
 /**
  * Servlet implementation class OcrProcess
  */
-@WebServlet("/OcrProcess/")
-public class OcrProcess extends HttpServlet {
+@WebServlet("/sendOk/")
+public class sendOk extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private ArrayList<Room> rooms;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public OcrProcess() {
+	public sendOk() {
 		super();
 		// TODO Auto-generated constructor stub
-	}
-
-
-	public void init(){
-		rooms = new ArrayList<Room>();
 	}
 
 	/**
@@ -58,65 +52,13 @@ public class OcrProcess extends HttpServlet {
 
 	}
 	
-	private ArrayList<String> doStuff(FileItem fileItem) throws IOException{
-		// Instantiates a client
-		ImageAnnotatorClient vision = ImageAnnotatorClient.create();
-		// The path to the image file to annotate
-		//String fileName = servletContext.getResourceAsStream("WEB-INF/receipt.jpg");
-
-		// Reads the image file into memory
-		byte[] data = org.apache.commons.io.IOUtils.toByteArray(fileItem.getInputStream());
-		ByteString imgBytes = ByteString.copyFrom(data);
-
-		// Builds the image annotation request
-		List<AnnotateImageRequest> requests = new ArrayList<>();
-		Image img = Image.newBuilder().setContent(imgBytes).build();
-		Feature feat = Feature.newBuilder().setType(Type.TEXT_DETECTION).build();
-		AnnotateImageRequest request = AnnotateImageRequest.newBuilder()
-				.addFeatures(feat)
-				.setImage(img)
-				.build();
-		requests.add(request);
-
-		// Performs label detection on the image file
-		BatchAnnotateImagesResponse response = vision.batchAnnotateImages(requests);
-		List<AnnotateImageResponse> responses = response.getResponsesList();
-
-		
-		ArrayList<String> products = new ArrayList<String>();
-		for (AnnotateImageResponse res : responses) {
-			if (res.hasError()) {
-				System.out.printf("Error: %s\n", res.getError().getMessage());
-				return null;
-			}
-
-			for (EntityAnnotation annotation : res.getTextAnnotationsList()) {
-				annotation.getAllFields().forEach((k, v)-> {
-					if(k.toString().contains("google.cloud.vision.v1.EntityAnnotation.description")){
-						String[] text = v.toString().split("\n");
-						for(int i = 0; i < text.length - 1;i++){
-							if(text[i].startsWith("1") && text[i+1].contains(".")){
-								products.add(text[i].substring(text[i].indexOf(" ") + 1, text[i].length()));
-								products.add(text[i+1]);
-							} else if(text[i].contains("Total")){
-								products.add("Total");
-								products.add(text[i+1]);
-								break;
-							}
-						}
-					}
-				});
-			}
-		}
-		return products;
-	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//doGet(request, response);
+		
+		String room = (String) request.getAttribute("room");
 		// Create a factory for disk-based file items
 		DiskFileItemFactory factory = new DiskFileItemFactory();
 
@@ -137,7 +79,7 @@ public class OcrProcess extends HttpServlet {
 
 			    if (item.isFormField()) {
 			    } else {
-			        products.addAll(doStuff(item));
+			        RoomManager.sendOk(item,room);
 			    }
 			}
 		} catch (FileUploadException e) {
