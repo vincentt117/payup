@@ -15,6 +15,7 @@ public class middleProcess {
         try {
             doPost multipart = new doPost(requestURL, charset);
             multipart.addHeaderField("name", name);
+            multipart.nextStep();
             List<String> response = multipart.finish();
              
             String totalResponse = "";
@@ -41,6 +42,7 @@ public class middleProcess {
         try {
             doPost multipart = new doPost(requestURL, charset);
             multipart.addHeaderField("name", name);
+            multipart.nextStep();
             List<String> response = multipart.finish();
              
             
@@ -65,6 +67,7 @@ public class middleProcess {
             doPost multipart = new doPost(requestURL, charset);
             multipart.addHeaderField("name", name);
             multipart.addHeaderField("room", room);
+            multipart.nextStep();
             List<String> response = multipart.finish();
              
             String totalResponse = "";
@@ -91,9 +94,10 @@ public class middleProcess {
  
         try {
             doPost multipart = new doPost(requestURL, charset);
-            multipart.addFilePart("uploadImg", file);
             multipart.addHeaderField("name", name);
             multipart.addHeaderField("room", room);
+            multipart.nextStep();
+            multipart.addFilePart("uploadImg", file);
             
             List<String> response = multipart.finish();
             response.size();
@@ -111,10 +115,11 @@ public class middleProcess {
  
         try {
             doPost multipart = new doPost(requestURL, charset);
-            multipart.addFilePart("uploadImg", file);
             multipart.addHeaderField("name", name);
             multipart.addHeaderField("room", room);
- 
+            multipart.nextStep();
+            multipart.addFilePart("uploadImg", file);
+            
             List<String> response = multipart.finish();
              
             String totalResponse = "";
@@ -143,6 +148,7 @@ public class middleProcess {
  
         try {
             doPost multipart = new doPost(requestURL, charset);
+            multipart.nextStep();
             multipart.addFilePart("uploadImg", img);
  
             List<String> response = multipart.finish();
