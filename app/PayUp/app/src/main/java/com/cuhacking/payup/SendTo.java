@@ -40,11 +40,9 @@ public class SendTo extends AppCompatActivity {
                 MediaStore.Images.ImageColumns.DATE_TAKEN,
                 MediaStore.Images.ImageColumns.MIME_TYPE
         };
-
         final Cursor cursor = getApplicationContext().getContentResolver()
                 .query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, projection, null,
                         null, MediaStore.Images.ImageColumns.DATE_TAKEN + " DESC");
-
         // Put it in the image view
         if (cursor.moveToFirst()) {
             //final ImageView imageView = (ImageView) findViewById(R.id.pictureView);
@@ -62,12 +60,6 @@ public class SendTo extends AppCompatActivity {
         for (int i = 0; i < roomList.size(); i++) {
             addRow(tableLayout, this, roomList.get(i));
         }
-
-
-
-
-
-
     }
 
 
