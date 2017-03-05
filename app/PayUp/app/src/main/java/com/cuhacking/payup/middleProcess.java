@@ -8,6 +8,34 @@ import java.util.UUID;
 
 public class middleProcess {
 	
+	public static ArrayList<GenericTwo> joinRoom(String roomId, String name){
+        String charset = "UTF-8";
+        String requestURL = "http://172.17.192.146:8080/payupBack/joinRoom/";
+        ArrayList<GenericTwo> prices = new ArrayList<GenericTwo>();
+        try {
+            doPost multipart = new doPost(requestURL, charset);
+            multipart.addHeaderField("room", roomId);
+            multipart.addHeaderField("name", name);
+            multipart.nextStep();
+            List<String> response = multipart.finish();
+             
+            String totalResponse = "";
+            for (String line : response) {
+                totalResponse += line;
+            }
+            
+            String[] split = totalResponse.split(",");
+            for(int i = 0; i < split.length;i = i + 2){
+            	prices.add(new GenericTwo(split[i],Float.parseFloat(split[i+1])));
+            }
+            
+        } catch (IOException ex) {
+            System.err.println(ex);
+        }
+		
+		return prices;
+	}
+	
 	public static ArrayList<String> getRooms(String name){
         String charset = "UTF-8";
         String requestURL = "http://172.17.192.146:8080/payupBack/getRooms/";
@@ -57,8 +85,8 @@ public class middleProcess {
 		return totalResponse;
 	}
 	
-	public static ArrayList<Float> update(String name,String room){
-		ArrayList<Float> prices = new ArrayList<Float>();
+	public static ArrayList<GenericTwo> update(String name,String room){
+		ArrayList<GenericTwo> prices = new ArrayList<GenericTwo>();
 		
         String charset = "UTF-8";
         String requestURL = "http://172.17.192.146:8080/payupBack/updateTable/";
@@ -76,8 +104,8 @@ public class middleProcess {
             }
             
             String[] split = totalResponse.split(",");
-            for(int i = 0; i < split.length;i++){
-            	prices.add(Float.parseFloat(split[i]));
+            for(int i = 0; i < split.length;i = i + 2){
+            	prices.add(new GenericTwo(split[i],Float.parseFloat(split[i+1])));
             }
             
         } catch (IOException ex) {

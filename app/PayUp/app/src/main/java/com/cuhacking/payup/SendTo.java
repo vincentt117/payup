@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TableLayout;
@@ -94,7 +95,8 @@ public class SendTo extends AppCompatActivity {
         tl.addView(tr);
     }
     public void joinRoom(View v){
-        new Operation().execute("joinRoom");
+        EditText roomName = (EditText)findViewById(R.id.room_name);
+        new Operation().execute("joinRoom", roomName.getText().toString());
     }
     public void createRoom(View v){
         new Operation().execute("createRoom");
@@ -110,13 +112,12 @@ public class SendTo extends AppCompatActivity {
         @Override
         protected String doInBackground(String... strings) {
             String s = "";
-            for(int i =  0 ; i < strings.length ; i++){
-                if(strings[0].equals("joinRoom")){
-
-                }else if(strings[0].equals("createRoom")){
-                    s = middleProcess.createRoom(SelectActivity.username);
-                }
+            if(strings[0].equals("joinRoom")){
+                s = middleProcess.joinRoom(strings[1], SelectActivity.username).toString();
+            }else if(strings[0].equals("createRoom")){
+                s = middleProcess.createRoom(SelectActivity.username);
             }
+
             Log.d("String Params:", strings[0]);
 
 //            String s = middleProcess.createRoom("Username1");
@@ -136,7 +137,6 @@ public class SendTo extends AppCompatActivity {
         }
     }
     public void join(View v){
-
         Intent intent = new Intent(this, DisplayTable.class);
         startActivity(intent);
     }
