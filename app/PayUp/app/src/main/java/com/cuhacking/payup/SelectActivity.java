@@ -62,7 +62,7 @@ public class SelectActivity extends AppCompatActivity {
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Intent intent = new Intent(this, SendTo.class);
+        Intent intent = new Intent(this, TakeReceiptPic.class);
         startActivity(intent);
     }
 
