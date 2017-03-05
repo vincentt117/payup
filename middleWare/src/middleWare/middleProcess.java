@@ -14,7 +14,7 @@ public class middleProcess {
         ArrayList<String> uuids = new ArrayList<String>();
         try {
             doPost multipart = new doPost(requestURL, charset);
-            multipart.addFormField("name", name);
+            multipart.addHeaderField("name", name);
             List<String> response = multipart.finish();
              
             String totalResponse = "";
@@ -40,7 +40,7 @@ public class middleProcess {
         String totalResponse = "";
         try {
             doPost multipart = new doPost(requestURL, charset);
-            multipart.addFormField("name", name);
+            multipart.addHeaderField("name", name);
             List<String> response = multipart.finish();
              
             
@@ -63,8 +63,8 @@ public class middleProcess {
  
         try {
             doPost multipart = new doPost(requestURL, charset);
-            multipart.addFormField("name", name);
-            multipart.addFormField("room", room);
+            multipart.addHeaderField("name", name);
+            multipart.addHeaderField("room", room);
             List<String> response = multipart.finish();
              
             String totalResponse = "";
@@ -92,8 +92,8 @@ public class middleProcess {
         try {
             doPost multipart = new doPost(requestURL, charset);
             multipart.addFilePart("uploadImg", file);
-            multipart.addFormField("name", name);
-            multipart.addFormField("room", room);
+            multipart.addHeaderField("name", name);
+            multipart.addHeaderField("room", room);
             
             List<String> response = multipart.finish();
             response.size();
@@ -112,8 +112,8 @@ public class middleProcess {
         try {
             doPost multipart = new doPost(requestURL, charset);
             multipart.addFilePart("uploadImg", file);
-            multipart.addFormField("name", name);
-            multipart.addFormField("room", room);
+            multipart.addHeaderField("name", name);
+            multipart.addHeaderField("room", room);
  
             List<String> response = multipart.finish();
              

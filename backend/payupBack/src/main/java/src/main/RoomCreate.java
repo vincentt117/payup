@@ -27,7 +27,7 @@ public class RoomCreate extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String name = (String) request.getAttribute("name");
+		String name = request.getHeader("name");
 		Room room = RoomManager.addRoom(name);
 		response.getWriter().append(room.getId().toString());
 	}

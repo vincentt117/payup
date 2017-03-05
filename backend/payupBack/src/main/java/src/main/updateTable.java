@@ -58,7 +58,7 @@ public class updateTable extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String room = (String) request.getAttribute("room");
+		String room = (String) request.getParameter("room");
 		response.getWriter().append(RoomManager.getRoomDue(room));
 	}
 

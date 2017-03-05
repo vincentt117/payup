@@ -58,7 +58,7 @@ public class sendOk extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String room = (String) request.getAttribute("room");
+		String room = request.getParameter("room");
 		// Create a factory for disk-based file items
 		DiskFileItemFactory factory = new DiskFileItemFactory();
 
