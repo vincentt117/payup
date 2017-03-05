@@ -42,6 +42,11 @@ public class SendTo extends AppCompatActivity {
                 imageView.setImageBitmap(bm);
             }
         }
+
+
+        //get file
+        //middleProcess.send(file);
+
 //        ArrayAdapter adapter = new ArrayAdapter<String>(this,
 //                R.layout.activity_send_to, mobileArray);
 //
